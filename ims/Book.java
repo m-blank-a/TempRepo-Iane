@@ -10,6 +10,7 @@ import ims.BookEntry.BookType;
 // Class to display Book
 public class Book {
 	private Map<EntryId, BookEntry> entries = new LinkedHashMap<>();
+	private List<EntryId> displayOrder = new ArrayList<>();
 	private BookType acceptedType;
 	
 	@Override
@@ -30,5 +31,9 @@ public class Book {
 	@Override
 	public Object getValueAt(int row, int col) {
 		
+	}
+	
+	public void AddEntry(EntryId id, BookEntry entry) {
+		entries.put(id, entry);
 	}
 }
