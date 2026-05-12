@@ -30,5 +30,22 @@ jobs:
             - name: Release build
               uses: softprops/action-gh-release@v1
               with:
-                name: Inventory Management System
+                name: Release ${{ github.ref_name }}
                 path: IMS.jar
+                body: |
+                    # Inventory Management System
+                    
+                    ## Default credentials
+                    | Field | Value |
+                    |---|---|
+                    | Username | test |
+                    | Password | 4567 |
+                    
+                    ## How to Run?
+                    Double-click `IMS.jar`. `IMS.jar` is within the `zip` file that you can download below.
+                    
+                    Alternatively, you can run...
+                    ```
+                        java -jar IMS.jar
+                    ```
+                    on your local `cmd.exe`.
