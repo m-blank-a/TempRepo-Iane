@@ -35,8 +35,6 @@ jobs:
               with:
                 name: Release ${{ github.ref_name }}
                 files: IMS.jar
-                permissions:
-                    contents: write
                 body: |
                     # Inventory Management System
                     
