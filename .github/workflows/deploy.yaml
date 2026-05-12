@@ -27,11 +27,16 @@ jobs:
             - name: Package into a JAR
               run: jar cmvf MANIFEST.MF IMS.jar -C bin .
               
+            - name: Verify JAR
+              run: ls -la *.jar
+              
             - name: Release build
               uses: softprops/action-gh-release@v1
               with:
                 name: Release ${{ github.ref_name }}
-                path: ./IMS.jar
+                files: IMS.jar
+                permissions:
+                    contents: write
                 body: |
                     # Inventory Management System
                     
