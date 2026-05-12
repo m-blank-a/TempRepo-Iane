@@ -1,16 +1,28 @@
 package ims;
 
-import javax.swing.*;
 import ims.*;
 import ims.BookEntry.BookType;
+import ims.Menu.ProgramState;
 
 public class Main {
+
 	public static void main(String[] args) {
 		AccountManager.GetCredentials();
+		ProgramState state = ProgramState.LOGIN;
 		do {
-			AccountManager.PromptLogin();
+			boolean isActive = AccountManager.PromptLogin();
 			
-			System.exit(0);
-		} while (true);
+			if (!isActive) {
+				state = ProgramState.TERMINATED;
+				break;
+			}
+			
+			Menu menu = new Menu();
+			state = menu.showMenu();
+		} while (state == ProgramState.LOGIN);
+		
+		if (state == ProgramState.TERMINATED) {
+			System.exit(0); // Kill all threads and subprocesses of this program, just in case.
+		}
 	}
 }

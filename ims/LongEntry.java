@@ -116,7 +116,7 @@ public class LongEntry extends Entry {
 	
 	private static void UpdateDay(JSpinner monthSpin, JSpinner yearSpin, JSpinner daySpin, SpinnerNumberModel dayModel) {
 		int month = (int) monthSpin.getValue();
-		int year = (int) monthSpin.getValue();
+		int year = (int) yearSpin.getValue();
 		int maxDay = LocalDate.of(year, month, 1).lengthOfMonth();
 		
 		int day = (int) daySpin.getValue();

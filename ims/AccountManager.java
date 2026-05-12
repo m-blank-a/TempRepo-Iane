@@ -206,22 +206,22 @@ public class AccountManager {
 	
 	// This is a blocking function.
 	// When called in Main.java, this acts like a gatekeeper for the entire program.
-	static void PromptLogin() {
+	static boolean PromptLogin() {
 		AuthState loginAuth = AuthState.FAILED;
 		
 		do {
 			loginAuth = CheckAuthorization();
 			switch(loginAuth) {
 				case SUCCESS:
-					return;		// Stops the block
+					return true;		// Stops the block
 				case FAILED:
 					ShowUserPassMismatch();
 					break;
 				default:
-					System.exit(0);
-					break;
+					return false;
 			}
 		} while (loginAuth == AuthState.FAILED);
+		return false;
 	}
 
 }

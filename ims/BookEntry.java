@@ -121,6 +121,10 @@ public class BookEntry {
 		return newEntry;
 	}
 	
+	static BookEntry CreateBookEntry(int i) {
+		return BookEntry.CreateBookEntry(BookType.values()[i]);
+	}
+	
 	String[] GetHeaders() {
 		return HEADERS[this.bookType.ordinal()];
 	}
@@ -135,9 +139,9 @@ public class BookEntry {
 			.collect(Collectors.joining(","));
 	}
 	
-	private Entry[] GetEntries() {
+	public Entry GetCell(int index) {
 		if (initialized) {
-			return cells;
+			return cells[index];
 		}
 		return null;
 	}

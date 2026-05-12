@@ -7,7 +7,9 @@ public abstract class Entry {
 		STRING,
 		BOOLEAN
 	}
-
+	
+	public static long entryCount = 0;
+	
 	private EntryType type;
 	
 	protected Entry(EntryType type) {
