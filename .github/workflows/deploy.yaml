@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+    detect-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Set context to repo
+              uses: actions/checkout@v4
+            
+            - name: Create bin directory
+              run: mkdir -p bin
+            
+            - name: Setup JDK
+              uses: actions/setup-java@v4
+              with:
+                java-version: '25'
+                distribution: 'temurin'
+            
+            - name: Compile
+              run: javac -d bin ims/*.java
+              
+            - name: Package into a JAR
+              run: jar cmvf MANIFEST.MF IMS.jar -C bin .
+              
+            - name: Release build
+              uses: actions/upload-artifact@v4
+              with:
+                name: Inventory Management System
+                path: IMS.jar

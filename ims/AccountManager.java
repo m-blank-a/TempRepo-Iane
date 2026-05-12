@@ -75,6 +75,10 @@ public class AccountManager {
 		JTextField usernameField = new JTextField();
 		JPasswordField passwordField = new JPasswordField();
 		
+		usernameField.addActionListener(e -> {
+			passwordField.requestFocusInWindow(); 	// When pressing enter, focuses to the password instead
+		});
+		
 		Object[] authPrompt = {
 			"Username: ", usernameField,
 			"Password: ", passwordField
